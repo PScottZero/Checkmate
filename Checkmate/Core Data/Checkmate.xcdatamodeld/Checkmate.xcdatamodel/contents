@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="20B29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="GameSave" representedClassName="GameSave" syncable="YES">
+        <attribute name="aiDifficulty" optional="YES" attributeType="String"/>
+        <attribute name="image" optional="YES" attributeType="Binary"/>
+        <attribute name="isPlayer1Turn" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="player1TimeLeft" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="player2TimeLeft" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="playerIsFirst" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="playingWithAI" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="time" optional="YES" attributeType="String"/>
+        <attribute name="timeLimit" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="pieces" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Piece" inverseName="isInGame" inverseEntity="Piece"/>
+        <relationship name="player1" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="isPlayer1ForGame" inverseEntity="Player"/>
+        <relationship name="player2" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="isPlayer2ForGame" inverseEntity="Player"/>
+    </entity>
+    <entity name="Piece" representedClassName="Piece" syncable="YES">
+        <attribute name="belongsToPlayer1" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="canTakeEnPassant" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="column" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="moveCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="row" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="isInGame" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GameSave" inverseName="pieces" inverseEntity="GameSave"/>
+    </entity>
+    <entity name="Player" representedClassName="Player" syncable="YES">
+        <attribute name="image" optional="YES" attributeType="Binary"/>
+        <attribute name="losses" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="wins" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="isPlayer1ForGame" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GameSave" inverseName="player1" inverseEntity="GameSave"/>
+        <relationship name="isPlayer2ForGame" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GameSave" inverseName="player2" inverseEntity="GameSave"/>
+    </entity>
+    <elements>
+        <element name="GameSave" positionX="-63" positionY="18" width="128" height="209"/>
+        <element name="Piece" positionX="-45" positionY="45" width="128" height="134"/>
+        <element name="Player" positionX="-63" positionY="-18" width="128" height="134"/>
+    </elements>
+</model>
