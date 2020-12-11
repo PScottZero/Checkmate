@@ -10,6 +10,8 @@ Checkmate is a chess app programmed using SwiftUI, Core Data, and SpriteKit. The
 * Ability to save and load games
 * Ability to change app theme
 
+I created this app as my final project for my application development class at Penn State (CMPSC 475). We were tasked with created an app of our choosing to develop over a 5-week period. I decided to create a chess app after being inspired by the Netflix show <i>The Queen's Gambit</i>. Despite having little actual chess skill, I still felt that this would be a fun project to attempt.
+
 ## Building
 
 This app does not require any external dependencies to work. Simply load the project into Xcode and build it normally. This app was developed mainly using the iPhone SE 2nd Gen simulator, but should also work for other iPhone models.
