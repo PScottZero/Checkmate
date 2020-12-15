@@ -30,6 +30,7 @@ struct SKConstants {
     static let easyDepth: Int = 1
     static let normalDepth: Int = 2
     static let hardDepth: Int = 3
+    static let impossibleDepth: Int = 4
     static let initialAlpha: Int = -10000
     static let initialBeta: Int = 10000
 }

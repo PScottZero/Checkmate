@@ -85,12 +85,11 @@ struct GameButtons: View {
         for piece in Array(gameSave.pieces) {
             Delete.piece(piece)
         }
-        let allPieces = chessScene.board.piecesOnBoardForPlayer(.player1) + chessScene.board.piecesOnBoardForPlayer(.player2)
+        let allPieces = chessScene.board.piecesForPlayer(.player1) + chessScene.board.piecesForPlayer(.player2)
         for piece in allPieces {
-            let tile = chessScene.board.tileFromPiece(piece)
             let pieceMO = Piece(context: viewContext)
-            pieceMO.row = Int16(tile.0)
-            pieceMO.column = Int16(tile.1)
+            pieceMO.row = Int16(piece.tile.0)
+            pieceMO.column = Int16(piece.tile.1)
             pieceMO.moveCount = Int16(piece.moveCount)
             pieceMO.canTakeEnPassant = piece.canTakeEnPassant
             pieceMO.type = piece.type.rawValue

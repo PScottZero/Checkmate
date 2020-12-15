@@ -24,7 +24,6 @@
 		F731F723257FDA9C0052845B /* GameStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F731F722257FDA9C0052845B /* GameStatus.swift */; };
 		F73444142557709D00B99CD1 /* EditPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73444132557709D00B99CD1 /* EditPlayerView.swift */; };
 		F73E8A842558EBA000ACD9EA /* ViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73E8A832558EBA000ACD9EA /* ViewConstants.swift */; };
-		F73FD180255C7F0E00B068F5 /* PieceSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73FD17F255C7F0E00B068F5 /* PieceSet.swift */; };
 		F73FD185255C814D00B068F5 /* ChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73FD184255C814D00B068F5 /* ChessBoard.swift */; };
 		F74288182577E6E200B6E91C /* GameThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74288172577E6E200B6E91C /* GameThemes.swift */; };
 		F74288202577EA1000B6E91C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F742881F2577EA1000B6E91C /* SettingsView.swift */; };
@@ -101,7 +100,6 @@
 		F731F722257FDA9C0052845B /* GameStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStatus.swift; sourceTree = "<group>"; };
 		F73444132557709D00B99CD1 /* EditPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPlayerView.swift; sourceTree = "<group>"; };
 		F73E8A832558EBA000ACD9EA /* ViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConstants.swift; sourceTree = "<group>"; };
-		F73FD17F255C7F0E00B068F5 /* PieceSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceSet.swift; sourceTree = "<group>"; };
 		F73FD184255C814D00B068F5 /* ChessBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessBoard.swift; sourceTree = "<group>"; };
 		F74288172577E6E200B6E91C /* GameThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameThemes.swift; sourceTree = "<group>"; };
 		F742881F2577EA1000B6E91C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -406,7 +404,6 @@
 				F724295D2572AB8B0030E911 /* MoveCalculation.swift */,
 				F73FD184255C814D00B068F5 /* ChessBoard.swift */,
 				F7B56C0F255CA06200CDFC15 /* ChessPiece.swift */,
-				F73FD17F255C7F0E00B068F5 /* PieceSet.swift */,
 			);
 			path = "Chess Logic";
 			sourceTree = "<group>";
@@ -586,7 +583,6 @@
 				F704CCF4257EB22100D8207F /* Player+CoreDataProperties.swift in Sources */,
 				F7B1F95025748F19001952A8 /* LeaderboardListItem.swift in Sources */,
 				F724295E2572AB8B0030E911 /* MoveCalculation.swift in Sources */,
-				F73FD180255C7F0E00B068F5 /* PieceSet.swift in Sources */,
 				F77040DF2555EC3000AA3A8A /* CheckmateApp.swift in Sources */,
 				F704CCF5257EB22100D8207F /* GameSave+CoreDataClass.swift in Sources */,
 				F74DF4F4255B494D00CFF7A8 /* PlayerListView.swift in Sources */,

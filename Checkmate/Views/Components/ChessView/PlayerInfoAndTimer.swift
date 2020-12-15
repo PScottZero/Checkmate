@@ -30,7 +30,7 @@ struct PlayerInfoAndTimer: View {
                     Circle()
                         .stroke(playerNumber == .player1 ? Color.white : Color.black, lineWidth: ViewConstants.mediumLineWidth)
                 )
-            Text(player!.name)
+            Text(player != nil ? player!.name : "")
             if timeLimit != 0 {
                 Text(timeLeftFormatted)
                     .onReceive(timer) { _ in

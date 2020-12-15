@@ -22,6 +22,8 @@ struct AIMoveCalculation {
             return SKConstants.normalDepth
         case .hard:
             return SKConstants.hardDepth
+        case .impossible:
+            return SKConstants.impossibleDepth
         }
     }
     
@@ -37,17 +39,23 @@ struct AIMoveCalculation {
             return SKConstants.nilMove
         } else {
             var values: [MoveAndValue] = []
+            let group = DispatchGroup()
             for move in moves {
                 let newBoard = board.copy()
                 newBoard.movePiece(from: move.from, to: move.to)
-                values.append((move: move, value: alphaBeta(
-                    board: newBoard,
-                    player: player.opposite(),
-                    depth: SKConstants.initialDepth,
-                    α: SKConstants.initialAlpha,
-                    β: SKConstants.initialBeta
-                )))
+                group.enter()
+                DispatchQueue.global(qos: .userInteractive).async {
+                    values.append((move: move, value: alphaBeta(
+                        board: newBoard,
+                        player: player.opposite(),
+                        depth: SKConstants.initialDepth,
+                        alpha: SKConstants.initialAlpha,
+                        beta: SKConstants.initialBeta
+                    )))
+                    group.leave()
+                }
             }
+            group.wait()
             values.shuffle()
             if player == .player1 {
                 return values.max { $0.value < $1.value }!.move
@@ -58,28 +66,27 @@ struct AIMoveCalculation {
     }
     
     // created with help from: https://en.wikipedia.org/wiki/Alpha–beta_pruning
-    private static func alphaBeta(board: ChessBoard, player: PlayerID, depth: Int, α: Int, β: Int) -> Int {
-        var alpha = α
-        var beta = β
+    private static func alphaBeta(board: ChessBoard, player: PlayerID, depth: Int, alpha: Int, beta: Int) -> Int {
+        var alphaCopy = alpha
+        var betaCopy = beta
         if depth == maxDepth {
             return board.boardValue
         }
         if player == .player1 {
             var bestValue = SKConstants.initialAlpha
-            outerLoop: for piece in board.piecesOnBoardForPlayer(.player1) {
-                let from = board.tileFromPiece(piece)
+            outerLoop: for piece in board.piecesForPlayer(.player1) {
                 for move in MoveCalculation.movesFor(piece, on: board) {
                     let newBoard = board.copy()
-                    newBoard.movePiece(from: from, to: move)
+                    newBoard.movePiece(from: piece.tile, to: move)
                     bestValue = max(bestValue, alphaBeta(
                         board: newBoard,
                         player: .player2,
                         depth: depth + 1,
-                        α: alpha,
-                        β: beta
+                        alpha: alphaCopy,
+                        beta: betaCopy
                     ))
-                    alpha = max(alpha, bestValue)
-                    if alpha >= beta {
+                    alphaCopy = max(alphaCopy, bestValue)
+                    if alphaCopy >= betaCopy {
                         break outerLoop
                     }
                 }
@@ -87,20 +94,19 @@ struct AIMoveCalculation {
             return bestValue
         } else {
             var bestValue = SKConstants.initialBeta
-            outerLoop: for piece in board.piecesOnBoardForPlayer(.player2) {
-                let from = board.tileFromPiece(piece)
+            outerLoop: for piece in board.piecesForPlayer(.player2) {
                 for move in MoveCalculation.movesFor(piece, on: board) {
                     let newBoard = board.copy()
-                    newBoard.movePiece(from: from, to: move)
+                    newBoard.movePiece(from: piece.tile, to: move)
                     bestValue = min(bestValue, alphaBeta(
                         board: newBoard,
                         player: .player1,
                         depth: depth + 1,
-                        α: alpha,
-                        β: beta
+                        alpha: alphaCopy,
+                        beta: betaCopy
                     ))
-                    beta = min(beta, bestValue)
-                    if beta <= alpha {
+                    betaCopy = min(betaCopy, bestValue)
+                    if betaCopy <= alphaCopy {
                         break outerLoop
                     }
                 }
@@ -111,9 +117,9 @@ struct AIMoveCalculation {
     
     private static func allMovesForPlayer(_ player: PlayerID, on board: ChessBoard) -> [Move] {
         var allMoves: [Move] = []
-        for piece in board.piecesOnBoardForPlayer(player) {
+        for piece in board.piecesForPlayer(player) {
             for move in MoveCalculation.movesFor(piece, on: board) {
-                allMoves.append((from: board.tileFromPiece(piece), to: move))
+                allMoves.append((from: piece.tile, to: move))
             }
         }
         return allMoves

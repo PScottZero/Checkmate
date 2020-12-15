@@ -29,8 +29,6 @@ class ChessScene: SKScene, ObservableObject {
     var gameSettings: GameSettings
     
     var board = ChessBoard()
-    private var player1Pieces: PieceSet
-    private var player2Pieces: PieceSet
     
     private var validMoveNodes: [SKShapeNode] = []
     private var validTiles: [Tile] = []
@@ -41,7 +39,7 @@ class ChessScene: SKScene, ObservableObject {
     var selectedPiece: ChessPiece? = nil
     var toTile: Tile? = nil
     
-    private var enemyKing: ChessPiece { turn == .player1 ? player2Pieces.king : player1Pieces.king }
+    private var enemyKing: ChessPiece { board.kingForPlayer(turn.opposite()) }
     var player1IsInCheckmate: Bool { MoveCalculation.kingIsInCheckmate(for: .player1, on: board) }
     var player2IsInCheckmate: Bool { MoveCalculation.kingIsInCheckmate(for: .player2, on: board) }
     
@@ -59,13 +57,9 @@ class ChessScene: SKScene, ObservableObject {
         } catch {
             moveSFX = nil
         }
-        player1Pieces = PieceSet(belongsTo: .player1, isOnBoard: board)
-        player2Pieces = PieceSet(belongsTo: .player2, isOnBoard: board)
-        board.player1King = player1Pieces.king
-        board.player2King = player2Pieces.king
         gameSettings = GameSettings()
         super.init(size: size)
-        self.scaleMode = .fill
+        scaleMode = .fill
     }
     
     convenience init(size: CGSize, gameSettings: GameSettings) {
@@ -94,16 +88,13 @@ class ChessScene: SKScene, ObservableObject {
         validMoveNodes = []
         validTiles = []
         selectedPiece = nil
-        board = ChessBoard()
         turn = .player1
         gameOver = false
         if gameSettings.selectedSave != nil {
+            board = ChessBoard(initPieces: false)
             initGameFromSave()
         } else {
-            player1Pieces = PieceSet(belongsTo: .player1, isOnBoard: board)
-            player2Pieces = PieceSet(belongsTo: .player2, isOnBoard: board)
-            board.player1King = player1Pieces.king
-            board.player2King = player2Pieces.king
+            board = ChessBoard()
         }
         drawChessGrid()
         drawChessPieces()
@@ -116,11 +107,12 @@ class ChessScene: SKScene, ObservableObject {
         for piece in Array(gameSettings.selectedSave!.pieces) {
             let newPiece = ChessPiece(
                 belongsTo: piece.belongsToPlayer1 ? .player1 : .player2,
-                type: ChessPieceType(rawValue: piece.type)!
+                type: ChessPieceType(rawValue: piece.type)!,
+                tile: (Int(piece.row), Int(piece.column))
             )
             newPiece.canTakeEnPassant = piece.canTakeEnPassant
             newPiece.moveCount = Int(piece.moveCount)
-            board.addPiece(newPiece, tile: (Int(piece.row), Int(piece.column)))
+            board.addPiece(newPiece, at: (Int(piece.row), Int(piece.column)))
             if piece.type == ChessPieceType.king.rawValue {
                 if piece.belongsToPlayer1 {
                     board.player1King = newPiece
@@ -178,7 +170,7 @@ class ChessScene: SKScene, ObservableObject {
     
     private func movePiece(to touchPoint: CGPoint) {
         toTile = locationToTile(touchPoint)
-        let fromTile = board.tileFromPiece(selectedPiece!)
+        let fromTile = selectedPiece!.tile
         if SharedFunctions.isInTileList(tileList: validTiles, tile: toTile!) {
             movingPiece = true
             hideValidMoves()
@@ -204,7 +196,7 @@ class ChessScene: SKScene, ObservableObject {
                 self.hideCheckNode()
                 let pieceToMove = self.board.pieceFromTile(move.from);
                 self.board.movePiece(from: move.from, to: move.to, chessScene: self)
-                self.animateMove(piece: pieceToMove!, to: self.board.tileFromPiece(pieceToMove!)) {
+                self.animateMove(piece: pieceToMove!, to: pieceToMove!.tile) {
                     self.moveCompletion()
                 }
             }
@@ -212,7 +204,7 @@ class ChessScene: SKScene, ObservableObject {
     }
     
     private func moveCompletion() {
-        moveSFX?.play()
+        // moveSFX?.play()
         if MoveCalculation.kingIsInCheck(for: turn.opposite(), on: board) {
             showCheckNode()
             if MoveCalculation.kingIsInCheckmate(for: turn.opposite(), on: board) {
@@ -253,7 +245,7 @@ class ChessScene: SKScene, ObservableObject {
     }
     
     private func showCheckNode() {
-        checkNode = squareNode(at: board.tileFromPiece(enemyKing), color: gameSettings.theme.checkColor)
+        checkNode = squareNode(at: enemyKing.tile, color: gameSettings.theme.checkColor)
         checkNode?.zPosition = SKConstants.checkHintZPosition
         addChild(checkNode!)
     }
@@ -263,8 +255,8 @@ class ChessScene: SKScene, ObservableObject {
     }
     
     private func pieceFromNode(node: SKNode) -> ChessPiece? {
-        if !(self.playingWithAI && turn == aiTurn) {
-            for piece in board.piecesOnBoardForPlayer(turn) {
+        if !(playingWithAI && turn == aiTurn) {
+            for piece in board.piecesForPlayer(turn) {
                 if piece.sprite == node {
                     return piece
                 }
@@ -274,7 +266,7 @@ class ChessScene: SKScene, ObservableObject {
     }
     
     private func locationToTile(_ location: CGPoint) -> Tile {
-        return (Int(floor(location.y / CGFloat(SKConstants.tileSize))),
+        (Int(floor(location.y / CGFloat(SKConstants.tileSize))),
                 Int(floor(location.x / CGFloat(SKConstants.tileSize))))
     }
     

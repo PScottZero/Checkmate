@@ -32,13 +32,12 @@ struct MoveCalculation {
             relativeMoves: pawnStandardMoves(pawn: pawn),
             skipCheck: skipCheck
         )
-        let tile = board.tileFromPiece(pawn)
         if validMoves.count == 1 {
-            if abs(validMoves[0].0 - tile.0) > 1 {
+            if abs(validMoves[0].0 - pawn.tile.0) > 1 {
                 validMoves = []
             }
         }
-        validMoves += MoveCalculation.pawnDiagonalAttack(pawn: pawn, pawnTile: tile, on: board)
+        validMoves += MoveCalculation.pawnDiagonalAttack(pawn: pawn, on: board)
         return MoveCalculation.removeMovesThatPutKingInCheck(
             piece: pawn,
             on: board,
@@ -58,11 +57,11 @@ struct MoveCalculation {
         return relativeMoves
     }
     
-    private static func pawnDiagonalAttack(pawn: ChessPiece, pawnTile: Tile, on board: ChessBoard) -> [Tile] {
+    private static func pawnDiagonalAttack(pawn: ChessPiece, on board: ChessBoard) -> [Tile] {
         var validMoves: [Tile] = []
         let diagonals = (pawn.player == .player1) ? [(1, -1), (1, 1)] : [(-1, -1), (-1, 1)]
         for diagonal in diagonals {
-            let possibleMove = (pawnTile.0 + diagonal.0, pawnTile.1 + diagonal.1)
+            let possibleMove = (pawn.tile.0 + diagonal.0, pawn.tile.1 + diagonal.1)
             let takenPiece = board.pieceFromTile(possibleMove)
             if (takenPiece != nil && takenPiece!.player == pawn.player.opposite()) ||
                 canTakeEnPassant(pawnPlayer: pawn.player, diagonal: possibleMove, board: board) {
@@ -113,7 +112,7 @@ struct MoveCalculation {
             return MoveCalculation.removeMovesThatPutKingInCheck(
                 piece: rook,
                 on: board,
-                possibleMoves: [board.tileFromPiece(king)],
+                possibleMoves: [king.tile],
                 skipCheck: skipCheck
             )
         }
@@ -149,7 +148,7 @@ struct MoveCalculation {
         var castleMoves: [Tile] = []
         for rook in board.rooksForPlayer(king.player) {
             if canCastle(king: king, rook: rook, on: board) {
-                castleMoves.append(board.tileFromPiece(rook))
+                castleMoves.append(rook.tile)
             }
         }
         return MoveCalculation.removeMovesThatPutKingInCheck(
@@ -162,15 +161,14 @@ struct MoveCalculation {
     
     private static func canCastle(king: ChessPiece, rook: ChessPiece, on board: ChessBoard) -> Bool {
         if rook.moveCount == 0 && king.moveCount == 0 {
-            let kingTile = board.tileFromPiece(king)
-            var tileCheck = board.tileFromPiece(rook)
-            if kingTile.0 == tileCheck.0 {
-                let range = abs(kingTile.1 - tileCheck.1)
-                let offset = kingTile.1 - tileCheck.1 > 0 ? 1 : -1
+            var tileCheck = rook.tile
+            if king.tile.0 == tileCheck.0 {
+                let range = abs(king.tile.1 - tileCheck.1)
+                let offset = king.tile.1 - tileCheck.1 > 0 ? 1 : -1
                 for _ in 0..<range {
                     tileCheck = (tileCheck.0, tileCheck.1 + offset)
                     let piece = board.pieceFromTile(tileCheck)
-                    if tileCheck == kingTile {
+                    if tileCheck == king.tile {
                         return true
                     }
                     if piece != nil {
@@ -188,10 +186,9 @@ struct MoveCalculation {
         relativeMoves: [Tile],
         skipCheck: Bool
     ) -> [Tile] {
-        let tile = board.tileFromPiece(piece)
         var validMoves: [Tile] = []
         for move in relativeMoves {
-            let possibleMove = (tile.0 + move.0, tile.1 + move.1)
+            let possibleMove = (piece.tile.0 + move.0, piece.tile.1 + move.1)
             if SharedFunctions.tileInBounds(possibleMove) {
                 let takenPiece = board.pieceFromTile(possibleMove)
                 if takenPiece == nil || (takenPiece!.player != piece.player && piece.type != .pawn) {
@@ -213,10 +210,9 @@ struct MoveCalculation {
         directions: [Tile],
         skipCheck: Bool
     ) -> [Tile] {
-        let tile = board.tileFromPiece(piece)
         var validMoves: [Tile] = []
         for direction in directions {
-            var possibleMove = tile
+            var possibleMove = piece.tile
             while SharedFunctions.tileInBounds(possibleMove) {
                 possibleMove = (possibleMove.0 + direction.0, possibleMove.1 + direction.1)
                 if SharedFunctions.tileInBounds(possibleMove) {
@@ -249,7 +245,7 @@ struct MoveCalculation {
         var validMoves: [Tile] = []
         for move in possibleMoves {
             if !MoveCalculation.movePutsKingInCheck(
-                from: board.tileFromPiece(piece),
+                from: piece.tile,
                 to: move,
                 for: piece.player,
                 on: board,
@@ -262,13 +258,11 @@ struct MoveCalculation {
     }
     
     static func kingIsInCheck(for player: PlayerID, on board: ChessBoard, skipCheck: Bool = false) -> Bool {
-        let enemyPieces = board.piecesOnBoardForPlayer(player.opposite())
-        let kingPiece = board.kingForPlayer(player)
-        let kingTile = board.tileFromPiece(kingPiece)
+        let enemyPieces = board.piecesForPlayer(player.opposite())
         for piece in enemyPieces {
             if SharedFunctions.isInTileList(
                 tileList: MoveCalculation.movesFor(piece, on: board, skipCheck: skipCheck),
-                tile: kingTile
+                tile: board.kingForPlayer(player).tile
             ) {
                 return true
             }
@@ -277,7 +271,7 @@ struct MoveCalculation {
     }
     
     static func kingIsInCheckmate(for player: PlayerID, on board: ChessBoard) -> Bool {
-        for piece in board.piecesOnBoardForPlayer(player) {
+        for piece in board.piecesForPlayer(player) {
             if MoveCalculation.movesFor(piece, on: board).count != 0 {
                 return false
             }

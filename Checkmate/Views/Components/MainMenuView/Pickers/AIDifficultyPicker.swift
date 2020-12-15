@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum AIDifficulty: String, CaseIterable {
-    case easy, normal, hard
+    case easy, normal, hard, impossible
 }
 
 struct AIDifficultyPicker: View {

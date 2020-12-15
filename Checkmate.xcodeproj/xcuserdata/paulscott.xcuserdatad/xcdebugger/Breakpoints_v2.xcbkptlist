@@ -190,9 +190,9 @@
             filePath = "Checkmate/SpriteKit/Chess Logic/ChessBoard.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
-            landmarkName = "tileFromPiece(_:)"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "castling(fromPiece:at:toPiece:at:chessScene:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -207,9 +207,9 @@
             filePath = "Checkmate/SpriteKit/Chess Logic/ChessBoard.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
-            landmarkName = "tileFromPiece(_:)"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "castling(fromPiece:at:toPiece:at:chessScene:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -223,9 +223,9 @@
             filePath = "Checkmate/SpriteKit/Chess Logic/ChessBoard.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
-            landmarkName = "tileFromPiece(_:)"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "castling(fromPiece:at:toPiece:at:chessScene:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -287,9 +287,9 @@
             filePath = "Checkmate/SpriteKit/ChessScene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
-            landmarkName = "pieceFromNode(node:)"
+            startingLineNumber = "268"
+            endingLineNumber = "268"
+            landmarkName = "locationToTile(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -335,9 +335,9 @@
             filePath = "Checkmate/SpriteKit/ChessScene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
-            landmarkName = "aiMove()"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
+            landmarkName = "moveCompletion()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -383,8 +383,8 @@
             filePath = "Checkmate/SpriteKit/ChessScene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
             landmarkName = "movePiece(to:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -399,9 +399,9 @@
             filePath = "Checkmate/SpriteKit/ChessScene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "232"
-            endingLineNumber = "232"
-            landmarkName = "animateMove(piece:to:completion:)"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
+            landmarkName = "showValidMoves()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -417,7 +417,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "59"
             endingLineNumber = "59"
-            landmarkName = "movePiece(from:to:chessScene:)"
+            landmarkName = "initBoard()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -433,23 +433,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "91"
             endingLineNumber = "91"
-            landmarkName = "castling(fromPiece:at:toPiece:at:chessScene:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "6DCFC9AB-244F-4E08-8F49-83707E9A5ADD"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Checkmate/SpriteKit/Chess Logic/ChessBoard.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "castling(fromPiece:at:toPiece:at:chessScene:)"
+            landmarkName = "movePiece(from:to:chessScene:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -495,10 +479,10 @@
             filePath = "Checkmate/SpriteKit/Chess Logic/ChessBoard.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "setEnPassantStatus(for:from:to:)"
-            landmarkType = "7">
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "ChessBoard"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -575,9 +559,105 @@
             filePath = "Checkmate/SpriteKit/ChessScene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
-            landmarkName = "aiMove()"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
+            landmarkName = "ChessScene"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "572BF0F1-DDBF-47E2-A777-DC73C10CF1E8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Checkmate/SpriteKit/Chess Logic/ChessBoard.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "movePiece(from:to:chessScene:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C7079DA7-E673-408A-9B6F-7C46A561DA3F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Checkmate/SpriteKit/Chess Logic/ChessBoard.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "movePiece(from:to:chessScene:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3C4EEAE8-0CF7-4422-B9CD-735FB63C1073"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Checkmate/SpriteKit/ChessScene.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
+            landmarkName = "moveCompletion()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "86BF8650-26EC-4795-8564-9198C3587A8D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Checkmate/SpriteKit/Chess Logic/ChessBoard.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "copy()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3543D5D0-C4D8-4FE2-856E-EB542AE74A88"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Checkmate/SpriteKit/Chess Logic/ChessBoard.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "copy()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "391B8C60-E1AE-4A16-A766-6C183DA6B274"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Checkmate/SpriteKit/Chess Logic/AIMoveCalculation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "minMaxStart(board:player:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
