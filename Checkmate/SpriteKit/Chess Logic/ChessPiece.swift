@@ -40,10 +40,12 @@ class ChessPiece: Equatable, Identifiable {
     }
     
     init(_ existingPiece: ChessPiece) {
+        moveCount = existingPiece.moveCount
         type = existingPiece.type
         sprite = existingPiece.sprite
         player = existingPiece.player
         value = existingPiece.value
+        canTakeEnPassant = existingPiece.canTakeEnPassant
         tile = existingPiece.tile
     }
     

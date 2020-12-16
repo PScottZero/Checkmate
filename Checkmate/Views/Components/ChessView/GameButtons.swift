@@ -21,6 +21,7 @@ struct GameButtons: View {
     
     private var gameImage: Data {
         chessScene.hideValidMoves()
+        chessScene.hideCheckNode()
         chessScene.drawChessGrid(forImage: true)
         let image = chessScene.view?.texture(from: chessScene.scene!)?.cgImage()
         chessScene.drawChessGrid()

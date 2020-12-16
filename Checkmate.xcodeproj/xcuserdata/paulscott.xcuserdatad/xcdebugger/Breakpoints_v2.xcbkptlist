@@ -711,5 +711,86 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6006C77D-7913-4D71-ADC1-7D36AA3D324B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Checkmate/SpriteKit/ChessScene.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
+            landmarkName = "aiMove()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "052E5F02-114B-44B2-B959-0C8901CA5293"
+            shouldBeEnabled = "No"
+            condition = "selectedPiece?.type == .queen"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Checkmate/SpriteKit/ChessScene.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
+            landmarkName = "aiMove()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "052E5F02-114B-44B2-B959-0C8901CA5293 - 555d8215c13e75ec"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in Checkmate.ChessScene.(aiMove in _C577916E53AE6163462632407D5188BA)() -&gt; ()"
+                  moduleName = "Checkmate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paulscott/Documents/GitHub/Checkmate/Checkmate/SpriteKit/ChessScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "198"
+                  endingLineNumber = "198"
+                  offsetFromSymbolStart = "1201">
+               </Location>
+               <Location
+                  uuid = "052E5F02-114B-44B2-B959-0C8901CA5293 - dd55dbb73e1155b3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; () in closure #1 () -&gt; () in Checkmate.ChessScene.(aiMove in _C577916E53AE6163462632407D5188BA)() -&gt; ()"
+                  moduleName = "Checkmate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paulscott/Documents/GitHub/Checkmate/Checkmate/SpriteKit/ChessScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "199"
+                  endingLineNumber = "199"
+                  offsetFromSymbolStart = "19">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3A733345-8333-40FA-8F3E-C7DA6DA4F983"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Checkmate/SpriteKit/Chess Logic/ChessBoard.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "copy()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

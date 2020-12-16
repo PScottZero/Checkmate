@@ -193,9 +193,9 @@ class ChessScene: SKScene, ObservableObject {
             } else {
                 self.hideValidMoves()
                 self.hideCheckNode()
-                let pieceToMove = self.board.pieceFromTile(move.from);
+                self.selectedPiece = self.board.pieceFromTile(move.from);
                 self.board.movePiece(from: move.from, to: move.to, chessScene: self)
-                self.animateMove(piece: pieceToMove!, to: pieceToMove!.tile) {
+                self.animateMove(piece: self.selectedPiece!, to: self.selectedPiece!.tile) {
                     self.moveCompletion()
                 }
             }
@@ -254,7 +254,7 @@ class ChessScene: SKScene, ObservableObject {
                 x: (selectedPiece!.tile.1 * SKConstants.tileSize) + 20,
                 y: (selectedPiece!.tile.0 * SKConstants.tileSize) + 20
         )
-        pieceIndicator!.fillColor = SKConstants.moveColor
+        pieceIndicator!.fillColor = gameSettings.theme.moveColor
         pieceIndicator!.strokeColor = .clear
         pieceIndicator!.zPosition = SKConstants.checkHintZPosition
         addChild(pieceIndicator!)
@@ -270,7 +270,7 @@ class ChessScene: SKScene, ObservableObject {
         addChild(checkNode!)
     }
     
-    private func hideCheckNode() {
+    func hideCheckNode() {
         checkNode?.removeFromParent()
     }
     
