@@ -39,8 +39,8 @@ struct SaveListItem: View {
                     Text("vs.")
                     Text(player2)
                 }
-                .font(.system(size: ViewConstants.mediumFont))
-                Text(gameSave.time)
+                .font(.system(size: ViewConstants.smallFont))
+                Text(timeToAmPM(gameSave.time))
                     .font(.system(size: ViewConstants.smallestFont))
             }
             Spacer()
@@ -65,5 +65,13 @@ struct SaveListItem: View {
                 selectedSave = nil
             }
         }
+    }
+    
+    func timeToAmPM(_ timeString: String) -> String {
+        let dateRead = DateFormatter()
+        let dateWrite = DateFormatter()
+        dateRead.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateWrite.dateFormat = "MM/dd/yy h:mm a"
+        return dateWrite.string(from: dateRead.date(from: timeString)!)
     }
 }

@@ -22,7 +22,7 @@ struct ViewConstants {
     static let circleIconSize: CGFloat = 20
     static let gearIconSize: CGFloat = 25
     static let rankSize: CGFloat = 45
-    static let savePreviewSize: CGFloat = 150
+    static let savePreviewSize: CGFloat = 160
     static let chessViewImageSize: CGFloat = 40
     
     // padding
