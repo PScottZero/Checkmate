@@ -15,7 +15,7 @@ enum PlayerID: String {
     var opposite: PlayerID { (self == .player1) ? .player2 : .player1 }
     
     mutating func toggle() {
-        self = opposite
+        self = self.opposite
     }
 }
 

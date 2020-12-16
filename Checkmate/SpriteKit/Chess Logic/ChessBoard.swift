@@ -141,8 +141,8 @@ class ChessBoard {
         removePiece(at: tile)
         addPiece(ChessPiece(belongsTo: oldPiece.player, type: .queen, tile: tile), at: tile)
         if chessScene != nil {
-            oldPiece.sprite.removeFromParent()
             board[tile.0][tile.1]!.sprite.position = oldPiece.sprite.position
+            oldPiece.sprite.removeFromParent()
             chessScene?.addChild(board[tile.0][tile.1]!.sprite)
             chessScene?.selectedPiece = board[tile.0][tile.1]
         }
