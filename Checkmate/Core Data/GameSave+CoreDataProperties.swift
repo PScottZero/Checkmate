@@ -12,8 +12,8 @@ import CoreData
 
 extension GameSave {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<GameSave> {
-        return NSFetchRequest<GameSave>(entityName: "GameSave")
+    public class func fetchRequest() -> NSFetchRequest<GameSave> {
+        NSFetchRequest<GameSave>(entityName: "GameSave")
     }
 
     @NSManaged public var aiDifficulty: String?

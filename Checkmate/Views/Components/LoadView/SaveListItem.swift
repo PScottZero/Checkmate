@@ -72,6 +72,9 @@ struct SaveListItem: View {
         let dateWrite = DateFormatter()
         dateRead.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateWrite.dateFormat = "MM/dd/yy h:mm a"
-        return dateWrite.string(from: dateRead.date(from: timeString)!)
+        if let date = dateRead.date(from: timeString) {
+            return dateWrite.string(from: date)
+        }
+        return ""
     }
 }

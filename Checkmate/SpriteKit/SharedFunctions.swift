@@ -9,7 +9,7 @@ import Foundation
 
 struct SharedFunctions {
     static func isInTileList(tileList: [Tile], tile: Tile) -> Bool {
-        return tileListIndex(of: tile, in: tileList) != -1
+        tileListIndex(of: tile, in: tileList) != -1
     }
     
     static func tileListIndex(of tile: Tile, in tileList: [Tile]) -> Int {
@@ -22,6 +22,6 @@ struct SharedFunctions {
     }
     
     static func tileInBounds(_ tile: Tile) -> Bool {
-        return (SKConstants.boardRange).contains(tile.0) && (SKConstants.boardRange).contains(tile.1);
+        (SKConstants.boardRange).contains(tile.0) && (SKConstants.boardRange).contains(tile.1);
     }
 }

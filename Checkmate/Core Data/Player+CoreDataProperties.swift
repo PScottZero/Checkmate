@@ -12,8 +12,8 @@ import CoreData
 
 extension Player {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Player> {
-        return NSFetchRequest<Player>(entityName: "Player")
+    public class func fetchRequest() -> NSFetchRequest<Player> {
+        NSFetchRequest<Player>(entityName: "Player")
     }
 
     @NSManaged public var image: Data?

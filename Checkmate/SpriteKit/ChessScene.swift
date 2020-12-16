@@ -11,13 +11,11 @@ import AVFoundation
 
 enum PlayerID: String {
     case player1, player2
+
+    var opposite: PlayerID { (self == .player1) ? .player2 : .player1 }
     
     mutating func toggle() {
-        self = self.opposite()
-    }
-    
-    func opposite() -> PlayerID {
-        return (self == .player1) ? .player2 : .player1
+        self = opposite
     }
 }
 
@@ -34,17 +32,18 @@ class ChessScene: SKScene, ObservableObject {
     private var validTiles: [Tile] = []
     private var moveSFX: AVAudioPlayer?
     private var checkNode: SKShapeNode?
+    private var pieceIndicator: SKShapeNode?
     private var movingPiece: Bool = false
     
     var selectedPiece: ChessPiece? = nil
     var toTile: Tile? = nil
     
-    private var enemyKing: ChessPiece { board.kingForPlayer(turn.opposite()) }
+    private var enemyKing: ChessPiece { board.kingForPlayer(turn.opposite) }
     var player1IsInCheckmate: Bool { MoveCalculation.kingIsInCheckmate(for: .player1, on: board) }
     var player2IsInCheckmate: Bool { MoveCalculation.kingIsInCheckmate(for: .player2, on: board) }
     
     var playingWithAI: Bool { gameSettings.playerCount == 1 }
-    var aiTurn: PlayerID { gameSettings.playerSide.opposite() }
+    var aiTurn: PlayerID { gameSettings.playerSide.opposite }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -99,7 +98,7 @@ class ChessScene: SKScene, ObservableObject {
         drawChessGrid()
         drawChessPieces()
         if turn == aiTurn && playingWithAI {
-            self.aiMove()
+            aiMove()
         }
     }
     
@@ -185,7 +184,7 @@ class ChessScene: SKScene, ObservableObject {
     private func aiMove() {
         DispatchQueue.global(qos: .userInteractive).async {
             let move = AIMoveCalculation.move(
-                aiPlayer: self.gameSettings.playerSide.opposite(),
+                aiPlayer: self.gameSettings.playerSide.opposite,
                 aiDifficulty: self.gameSettings.aiDifficulty,
                 board: self.board
             )
@@ -204,10 +203,10 @@ class ChessScene: SKScene, ObservableObject {
     }
     
     private func moveCompletion() {
-        // moveSFX?.play()
-        if MoveCalculation.kingIsInCheck(for: turn.opposite(), on: board) {
+        moveSFX?.play()
+        if MoveCalculation.kingIsInCheck(for: turn.opposite, on: board) {
             showCheckNode()
-            if MoveCalculation.kingIsInCheckmate(for: turn.opposite(), on: board) {
+            if MoveCalculation.kingIsInCheckmate(for: turn.opposite, on: board) {
                 DispatchQueue.main.async { self.gameOver = true }
             }
         }
@@ -228,6 +227,7 @@ class ChessScene: SKScene, ObservableObject {
     }
     
     private func showValidMoves() {
+        showCurrentPieceIndicator()
         validTiles = MoveCalculation.movesFor(selectedPiece!, on: board)
         for tile in validTiles {
             let moveNode = squareNode(at: tile, color: gameSettings.theme.moveColor)
@@ -235,13 +235,33 @@ class ChessScene: SKScene, ObservableObject {
             validMoveNodes.append(moveNode)
             addChild(moveNode)
         }
+        if validTiles.isEmpty {
+            hideCurrentPieceIndicator()
+        }
     }
     
-    private func hideValidMoves() {
+    func hideValidMoves() {
+        hideCurrentPieceIndicator()
         for moveBlock in validMoveNodes {
             moveBlock.removeFromParent()
         }
         validMoveNodes = []
+    }
+
+    private func showCurrentPieceIndicator() {
+        pieceIndicator = SKShapeNode(circleOfRadius: 20)
+        pieceIndicator!.position = CGPoint(
+                x: (selectedPiece!.tile.1 * SKConstants.tileSize) + 20,
+                y: (selectedPiece!.tile.0 * SKConstants.tileSize) + 20
+        )
+        pieceIndicator!.fillColor = SKConstants.moveColor
+        pieceIndicator!.strokeColor = .clear
+        pieceIndicator!.zPosition = SKConstants.checkHintZPosition
+        addChild(pieceIndicator!)
+    }
+
+    private func hideCurrentPieceIndicator() {
+        pieceIndicator?.removeFromParent()
     }
     
     private func showCheckNode() {

@@ -47,7 +47,7 @@ struct AIMoveCalculation {
                 DispatchQueue.global(qos: .userInteractive).async {
                     values.append((move: move, value: alphaBeta(
                         board: newBoard,
-                        player: player.opposite(),
+                        player: player.opposite,
                         depth: SKConstants.initialDepth,
                         alpha: SKConstants.initialAlpha,
                         beta: SKConstants.initialBeta

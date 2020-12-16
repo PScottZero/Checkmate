@@ -16,10 +16,10 @@ struct RoundedButton: View {
     
     init(_ label: String, disabled: Bool = false, action: @escaping () -> Void) {
         self.label = label;
-        self.gradient = Colors.transparent;
+        gradient = Colors.transparent;
         self.disabled = disabled
         self.action = action
-        self.opacity = ViewConstants.transparent
+        opacity = ViewConstants.transparent
     }
     
     init(_ label: String, gradient: LinearGradient, disabled: Bool = false, action: @escaping () -> Void) {
@@ -27,7 +27,7 @@ struct RoundedButton: View {
         self.gradient = gradient
         self.disabled = disabled
         self.action = action
-        self.opacity = ViewConstants.opaque
+        opacity = ViewConstants.opaque
     }
     
     var body: some View {

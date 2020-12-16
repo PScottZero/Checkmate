@@ -12,8 +12,8 @@ import CoreData
 
 extension Piece {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Piece> {
-        return NSFetchRequest<Piece>(entityName: "Piece")
+    public class func fetchRequest() -> NSFetchRequest<Piece> {
+        NSFetchRequest<Piece>(entityName: "Piece")
     }
 
     @NSManaged public var belongsToPlayer1: Bool

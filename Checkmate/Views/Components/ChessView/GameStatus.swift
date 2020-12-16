@@ -16,9 +16,9 @@ struct GameStatus: View {
     
     private var winner: String {
         if chessScene.playingWithAI {
-            return chessScene.turn.opposite() == gameSettings.playerSide ? "You Win!" : "You Lose :("
+            return chessScene.turn.opposite == gameSettings.playerSide ? "You Win!" : "You Lose :("
         } else {
-            return chessScene.turn.opposite() == .player1 ?
+            return chessScene.turn.opposite == .player1 ?
                 "\(gameSettings.player1!.name) Wins!" : "\(gameSettings.player2!.name) Wins!"
         }
     }
@@ -33,7 +33,7 @@ struct GameStatus: View {
     }
     
     private var ellipse: String {
-        return String(repeating: ".", count: ellipseCount)
+        String(repeating: ".", count: ellipseCount)
     }
     
     private var currentPlayerName: String {

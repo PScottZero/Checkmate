@@ -22,7 +22,7 @@ struct ChessView: View {
     init(gameSettings: GameSettings, shouldShowChessView: Binding<Bool>) {
         self.gameSettings = gameSettings
         self._shouldShowChessView = shouldShowChessView
-        self.chessScene = ChessScene(size: ViewConstants.chessSceneSize, gameSettings: gameSettings)
+        chessScene = ChessScene(size: ViewConstants.chessSceneSize, gameSettings: gameSettings)
     }
     
     var body: some View {

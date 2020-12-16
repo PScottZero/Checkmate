@@ -63,7 +63,7 @@ struct MoveCalculation {
         for diagonal in diagonals {
             let possibleMove = (pawn.tile.0 + diagonal.0, pawn.tile.1 + diagonal.1)
             let takenPiece = board.pieceFromTile(possibleMove)
-            if (takenPiece != nil && takenPiece!.player == pawn.player.opposite()) ||
+            if (takenPiece != nil && takenPiece!.player == pawn.player.opposite) ||
                 canTakeEnPassant(pawnPlayer: pawn.player, diagonal: possibleMove, board: board) {
                 validMoves.append(possibleMove)
             }
@@ -258,7 +258,7 @@ struct MoveCalculation {
     }
     
     static func kingIsInCheck(for player: PlayerID, on board: ChessBoard, skipCheck: Bool = false) -> Bool {
-        let enemyPieces = board.piecesForPlayer(player.opposite())
+        let enemyPieces = board.piecesForPlayer(player.opposite)
         for piece in enemyPieces {
             if SharedFunctions.isInTileList(
                 tileList: MoveCalculation.movesFor(piece, on: board, skipCheck: skipCheck),

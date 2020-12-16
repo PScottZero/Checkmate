@@ -2,14 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c5d367f-fa75-4ac5-a4b0-8d41218de086" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Checkmate.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/Checkmate.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Checkmate/Core Data/GameSave+CoreDataProperties.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Checkmate/Core Data/GameSave+CoreDataProperties.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Checkmate/Core Data/Piece+CoreDataProperties.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Checkmate/Core Data/Piece+CoreDataProperties.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Checkmate/Core Data/Player+CoreDataProperties.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Checkmate/Core Data/Player+CoreDataProperties.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Checkmate/SpriteKit/Chess Logic/AIMoveCalculation.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Checkmate/SpriteKit/Chess Logic/AIMoveCalculation.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Checkmate/SpriteKit/Chess Logic/ChessBoard.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Checkmate/SpriteKit/Chess Logic/ChessBoard.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Checkmate/SpriteKit/Chess Logic/ChessPiece.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Checkmate/SpriteKit/Chess Logic/ChessPiece.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Checkmate/SpriteKit/Chess Logic/MoveCalculation.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Checkmate/SpriteKit/Chess Logic/MoveCalculation.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Checkmate/SpriteKit/Chess Logic/PieceSet.swift" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Checkmate/SpriteKit/ChessScene.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Checkmate/SpriteKit/ChessScene.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Checkmate/SpriteKit/SharedFunctions.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Checkmate/SpriteKit/SharedFunctions.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Checkmate/Views/ChessView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Checkmate/Views/ChessView.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Checkmate/Views/Components/ChessView/GameButtons.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Checkmate/Views/Components/ChessView/GameButtons.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Checkmate/Views/Components/ChessView/GameStatus.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Checkmate/Views/Components/ChessView/GameStatus.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Checkmate/Views/Components/Shared/RoundedButton.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Checkmate/Views/Components/Shared/RoundedButton.swift" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +24,9 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="iphonesimulator_8B347AFD-E4DD-46F4-A47D-F9D86EF2FC5B" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectId" id="1lhmx7Z3eZcXxRpkzRUD2v7obiG" />
   <component name="ProjectViewState">
@@ -32,6 +40,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Checkmate.xcodeproj" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
   </component>
   <component name="RunManager">
@@ -55,6 +65,8 @@
       <updated>1608057940620</updated>
       <workItem from="1608057942477" duration="120000" />
       <workItem from="1608058081095" duration="3761000" />
+      <workItem from="1608138059466" duration="1515000" />
+      <workItem from="1608139593925" duration="383000" />
     </task>
     <servers />
   </component>
@@ -71,14 +83,20 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Checkmate/SpriteKit/Chess Logic/ChessBoard.swift</url>
           <line>163</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Checkmate/SpriteKit/Chess Logic/ChessBoard.swift</url>
+          <line>7</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

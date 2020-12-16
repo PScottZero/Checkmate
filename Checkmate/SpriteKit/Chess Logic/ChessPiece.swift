@@ -31,20 +31,20 @@ class ChessPiece: Equatable, Identifiable {
         tile: Tile
     ) {
         self.type = type
-        self.sprite = SKSpriteNode(imageNamed: "\(type.rawValue)_\(player == .player1 ? "white" : "black")")
-        self.sprite.zPosition = SKConstants.pieceZPosition
-        self.sprite.size = SKConstants.spriteSize
+        sprite = SKSpriteNode(imageNamed: "\(type.rawValue)_\(player == .player1 ? "white" : "black")")
+        sprite.zPosition = SKConstants.pieceZPosition
+        sprite.size = SKConstants.spriteSize
         self.player = player
         self.tile = tile
-        self.value = pieceValue(type: type, player: player)
+        value = pieceValue(type: type, player: player)
     }
     
     init(_ existingPiece: ChessPiece) {
-        self.type = existingPiece.type
-        self.sprite = existingPiece.sprite
-        self.player = existingPiece.player
-        self.value = existingPiece.value
-        self.tile = existingPiece.tile
+        type = existingPiece.type
+        sprite = existingPiece.sprite
+        player = existingPiece.player
+        value = existingPiece.value
+        tile = existingPiece.tile
     }
     
     func copy() -> ChessPiece { ChessPiece(self) }

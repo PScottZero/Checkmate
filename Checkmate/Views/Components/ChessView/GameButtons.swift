@@ -16,10 +16,11 @@ struct GameButtons: View {
     @Binding var shouldShowChessView: Bool
     
     private var disableExit: Bool {
-        return chessScene.aiTurn == chessScene.turn && !chessScene.gameOver && chessScene.playingWithAI
+        chessScene.aiTurn == chessScene.turn && !chessScene.gameOver && chessScene.playingWithAI
     }
     
     private var gameImage: Data {
+        chessScene.hideValidMoves()
         chessScene.drawChessGrid(forImage: true)
         let image = chessScene.view?.texture(from: chessScene.scene!)?.cgImage()
         chessScene.drawChessGrid()
@@ -100,13 +101,13 @@ struct GameButtons: View {
     
     private func adjustRatings() {
         if !chessScene.playingWithAI {
-            if chessScene.turn.opposite() == .player1 {
+            if chessScene.turn.opposite == .player1 {
                 player1Won()
             } else {
                 player2Won()
             }
         } else {
-            if chessScene.turn.opposite() == gameSettings.playerSide {
+            if chessScene.turn.opposite == gameSettings.playerSide {
                 player1Won()
             } else {
                 player2Won()
