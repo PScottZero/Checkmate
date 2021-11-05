@@ -1,6 +1,6 @@
 # Checkmate
 
-UPDATE: I have recreated Checkmate using Flutter. The recreation is called [En Passant](https://github.com/PScottZero/EnPassant), and is available on both Google Play and the Apple App Store. Please note that Checkmate's chess engine is slightly incorrect (e.g. castling while in check) and have been fixed in En Passant.
+UPDATE: I have recreated Checkmate using Flutter. The recreation is called [En Passant](https://github.com/PScottZero/EnPassant), and is available on both Google Play and the Apple App Store. Please note that Checkmate's chess engine is slightly incorrect (e.g. castling while in check) and has been fixed in En Passant.
 
 Checkmate is a chess app programmed using SwiftUI, Core Data, and SpriteKit. The features of this chess app include:
 * One-player gameplay with AI
